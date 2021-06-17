@@ -1,9 +1,11 @@
 #include <Adafruit_NeoPixel.h>
 
-#define LED_COUNT 360
-#define LIT_COUNT 360
+#define LED_COUNT 370
+#define LIT_COUNT 370
 #define BRIGHTNESS 192
-#define DEBUG true
+#define LOOP_COUNT 8
+#define LOOP_WAIT 500
+#define DEBUG false
 
 Adafruit_NeoPixel strips[] = {
   Adafruit_NeoPixel(LED_COUNT, 6, NEO_GRB + NEO_KHZ800),
@@ -22,34 +24,27 @@ void setup() {
     strips[i].show();
     strips[i].setBrightness(BRIGHTNESS);
   }
-}
-
-void loop() {
-  turnOn();
-  if (DEBUG) Serial.println("Turn on!");
-  delay(2000);
-  turnOff();
-  if (DEBUG) Serial.println("Turn off!");
-  delay(2000);
-  rainbow(10);
-}
-
-void turnOn() {
-  for (int i = 0; i < NUMSTRIPS; i++) {
-    //Adafruit_NeoPixel strip = strips[i];
-    for (int j = 0; j < LIT_COUNT; j++) {
-      strips[i].setPixelColor(j, strips[i].Color(255, 0, 0));
-    }
-    strips[i].show();
+  for (int i = 0; i < LOOP_COUNT; i++){
+    setStripColor(255,0,0);
+    delay(LOOP_WAIT);
+    setStripColor(0,255,0);
+    delay(LOOP_WAIT);  
+    setStripColor(0,0,255);
+    delay(LOOP_WAIT);  
+    setStripColor(255,255,255);
+    delay(LOOP_WAIT);  
   }
 }
 
+void loop() {
+  rainbow(10);
+}
 
-void turnOff() {
+void setStripColor(int r, int g, int b) {
   for (int i = 0; i < NUMSTRIPS; i++) {
     //Adafruit_NeoPixel strip = strips[i];
     for (int j = 0; j < LIT_COUNT; j++) {
-      strips[i].setPixelColor(j, strips[i].Color(0, 0, 255));
+      strips[i].setPixelColor(j, strips[i].Color(r, g, b));
     }
     strips[i].show();
   }
