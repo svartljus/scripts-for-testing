@@ -1,8 +1,9 @@
 #include <Adafruit_NeoPixel.h>
 
 #define LED_PIN     6
-#define LED_COUNT   400
-#define BRIGHTNESS  40
+#define LED_COUNT   384
+#define BRIGHTNESS  92
+#define WAIT        1
 
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRBW + NEO_KHZ800);
 
@@ -13,13 +14,14 @@ void setup() {
 }
 
 void loop() {
-  colorWipe(strip.Color(  255,   0,   0, 0), 5);
-  colorWipe(strip.Color(  0,   255,   0, 0), 5);
-  colorWipe(strip.Color(  0,   0,   255, 0), 5);
-  colorWipe(strip.Color(  255,   0,   0, 255), 5);
-  colorWipe(strip.Color(  0,   255,   0, 255), 5);
-  colorWipe(strip.Color(  0,   0,  255, 255), 5);
-  colorWipe(strip.Color(  0,   0,   0, 255), 5);
+  colorWipe(strip.Color(  255,  0,    0,    0),   WAIT);
+  colorWipe(strip.Color(  0,    255,  0,    0),   WAIT);
+  colorWipe(strip.Color(  0,    0,    255,  0),   WAIT);
+  colorWipe(strip.Color(  255,  255,  255,  0),   WAIT);
+  colorWipe(strip.Color(  255,  0,    0,    0),   WAIT);
+  colorWipe(strip.Color(  0,    255,  0,    0),   WAIT);
+  colorWipe(strip.Color(  0,    0,    255,  0),   WAIT);
+  colorWipe(strip.Color(  0,    0,    0,    255), WAIT);
 }
 
 void colorWipe(uint32_t color, int wait) {
