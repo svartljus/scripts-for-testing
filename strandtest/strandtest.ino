@@ -1,10 +1,10 @@
 #include <Adafruit_NeoPixel.h>
 
-#define LED_COUNT 370
-#define LIT_COUNT 370
-#define BRIGHTNESS 192
-#define LOOP_COUNT 8
-#define LOOP_WAIT 500
+#define LED_COUNT 288
+#define LIT_COUNT 288
+#define BRIGHTNESS 255
+#define LOOP_COUNT 4
+#define LOOP_WAIT 1000
 #define DEBUG false
 
 Adafruit_NeoPixel strips[] = {
